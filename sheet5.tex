@@ -1,0 +1,168 @@
+%inizative bildverarbeitung
+%llncs    article
+\documentclass[a4paper,parskip=full-]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Anf%C3%BChrungszeichen
+\usepackage[autostyle=true,german=quotes]{csquotes}
+
+\usepackage{subcaption}
+\usepackage{float}
+\restylefloat{figure}
+\usepackage{graphicx}  % images
+%\usepackage{qtree} % for trees
+%auch für Bäume
+%http://tex.stackexchange.com/questions/183866/tree-with-six-or-more-children
+\usepackage{tikz, tikz-qtree}
+\usepackage{pgfplots}
+\pgfplotsset{grid style={dashed,gray}}
+\usetikzlibrary{automata,topaths,plotmarks}
+\usepackage{lmodern}  %THE tex font :)
+\usepackage{url}  %urls in references
+%\usepackage{prettyref}
+%\usepackage{pstricks} %graphicv2
+\usepackage{cite}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{xspace}
+
+%http://www.kkittel.de/wiki/doku.php?id=tabellen:farbige_zellen
+\usepackage{colortbl}
+
+\usepackage{algorithmic} 
+\usepackage{wasysym}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc} % Zeichenkodierung   utf8   latin1
+%\include{biblio} % references
+\usepackage{listings}                           % for source code inclusion
+\usepackage{multirow} 
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{color}
+
+\usepackage{fancyvrb }
+
+%absatz
+\usepackage{setspace} 
+
+%breaking math formulars automaticly
+%http://tex.stackexchange.com/questions/3782/how-can-i-split-an-equation-over-two-lines
+\usepackage{breqn}
+
+%für kurze Enumarates wie i,I a, A etc.
+\usepackage[shortlabels]{enumitem}
+
+%Durchstreichungen
+%\cancel
+%http://de.wikibooks.org/wiki/LaTeX-Kompendium:_F%C3%BCr_Mathematiker#Durchstreichungen
+\usepackage{cancel}
+
+%Für Römische Zahlen
+\usepackage{enumitem}
+%\usepackage{romannum}%stdclsdv
+
+%Durchstreicen möglich
+\usepackage[normalem]{ulem}
+
+%Bessere Brüche
+\usepackage{nicefrac}
+
+%bookmarks
+%\usepackage[pdftex,bookmarks=true]{hyperref}
+%[pdftex,bookmarks=true,bookmarksopen,bookmarksdepth=2]
+\usepackage{hyperref}
+%\usepackage{scrhack}
+
+%fußnoten
+\usepackage{footnote}
+\usepackage{caption} 
+
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=25mm,bmargin=25mm,lmargin=15mm,rmargin=20mm}
+
+%randnotiz
+\newcommand\mpar[1]{\marginpar {\flushleft\sffamily\small #1}}
+\setlength{\marginparwidth}{3cm}
+
+%svg Grafiken
+%http://tex.stackexchange.com/questions/122871/include-svg-images-with-the-svg-package
+%\usepackage{svg}
+
+\usepackage{pgf}
+
+%http://tex.stackexchange.com/questions/48653/making-subsections-be-numbered-with-a-b-c
+\usepackage{chngcntr}
+\counterwithin{subsection}{section}
+
+%Sektions nicht Nummerrrieren (<=> section*{...})
+% \makeatletter
+% \renewcommand\@seccntformat[1]{}
+% \makeatother
+\setcounter{secnumdepth}{0}
+
+\title{Machine Learning \\
+Exercise sheet 4}
+
+\author{Gruppe 9: \\Hauke Wree and Fridtjof Schulte Steinberg}
+
+\newcommand{\R}[0]{{\mathbb{R}}}
+
+\newcommand{\N}[0]{{\mathbb{N}}}
+\newcommand{\C}[0]{{\mathbb{C}}}
+\newcommand{\K}[0]{{\mathbb{K}}}
+\newcommand{\lF}[0]{{\mathcal{l}}}
+\newcommand{\I}[0]{{\mathcal{I}}}
+\newcommand{\nhnh}[0]{{\frac{n}{2} \times \frac{n}{2}}} %nice
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\newcommand{\rm}[1]{\romannumeral #1}
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{.}}} 
+
+\renewcommand \thesubsection{\alph{subsection}}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 1 (Linear Discriminant Analysis LDA):}
+\subsection{a)}
+
+\subsubsection{Behauptung}
+Die Summe der within-class scatter $S_W$ 
+und der between-class scatter $S_B$ 
+ist gleich der Kovariance Matrix $\Sigma:\Sigma = S_W + S_B$
+
+\subsubsection{Beweis}
+Der within-class scatter $S_W$ und der between-class scatter $S_B$ ist gegeben mit:
+
+$$
+S_W = \frac{1}{N'} \sum^K_{k=1} \sum_{x_n \in C_k} (x_n-m_k)(x_n-m_k)^T
+$$
+
+$$
+S_B = \frac{1}{N'} \sum^K_{k=1} N_k (m_k-m)(m_k-m)^T
+$$
+Die Kovarianzmatrix ist gegeben mit:
+$$
+\Sigma =  \frac{1}{N} \sum^N_{n=1} (x_n-m)(x_n-m)^T
+$$
+
+\subsection{c)}
+Class 1: Data points $X_1 = \{(4,1),(2,4),(2,3),(3,6),(4,4) \}$ \\
+Class 2: Data points $X_2 = \{(9,10),(6,8),(9,5),(8,7),(10,8) \}$ \\
+
+$$
+m_1 = 
+\begin{pmatrix}
+3 \\ 3,6
+\end{pmatrix}
+m_2 = \begin{pmatrix}
+8,4 \\ 7,6
+\end{pmatrix}
+m = \begin{pmatrix}
+5,7 \\ 5,6
+\end{pmatrix}
+$$
+
+\end{document}
