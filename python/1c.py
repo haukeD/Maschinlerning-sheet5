@@ -10,6 +10,8 @@ x = np.array([x1, x2])
 ##m2 = np.sum(x2, axis=0,dtype=np.float)/x2.shape
 ##m = (m1 + m2) / 2
 
+#
+
 m = []
 
 ##nM.append(m1)
