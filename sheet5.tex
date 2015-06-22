@@ -276,25 +276,15 @@ S_W =  \frac{1}{N'} \sum^K_{k=1} \sum_{x_n \in C_k} (x_n-m_k)(x_n-m_k)^T \\
 \end{multline*}
 
 \begin{multline*}
-S_B = \frac{1}{10}\left(  
-\begin{pmatrix} -2,7 &  -2 \end{pmatrix} \cdot
-\begin{pmatrix} -2,7 \\ -2 \end{pmatrix} +
-\begin{pmatrix} 2,7 &  2 \end{pmatrix} \cdot
-\begin{pmatrix} 2,7 \\ 2 \end{pmatrix}
-\right)
-= \frac{1}{10}\left( 
-\begin{pmatrix} 7,29 & 5,4 \\ 5,4 & 4 \end{pmatrix} +
-\begin{pmatrix} 7,29 & 5,4 \\ 5,4 & 4 \end{pmatrix}
-\right)
-= \begin{pmatrix} 1,458 & 1,08 \\ 1,08 & 0,8 \end{pmatrix}
+S_B = \begin{pmatrix} 7,29 & 5,4 \\ 5,4 & 4 \end{pmatrix}
 \end{multline*}
 
 
 $$
 S_W^{-1} = \left(
 \begin{array}{cc}
- 0,217591 & -0,240273 \\
- -0,240273 & 0,346885 \\
+0.76824584 & 0.06402049 \\
+0.06402049 & 0.38412292
 \end{array}
 \right)
 $$
@@ -303,14 +293,14 @@ $$
 S_W^{-1} S_B \vec{w} = \lambda \vec{w} \Leftrightarrow
 \left(
 \begin{array}{cc}
- \frac{406755}{7043032} & \frac{75325}{1760758} \\
- \frac{342549}{14086064} & \frac{63435}{3521516} \\
+ 5.94622279 &  4.40460948 \\
+ 2.54097311 &  1.8822023 \\
 \end{array}
 \right) \cdot \vec{w} = \lambda \vec{w} = 0 \Leftrightarrow
 \left(
 \begin{array}{cc}
- \frac{406755}{7043032} - \lambda & \frac{75325}{1760758}\\
- \frac{342549}{14086064} & \frac{63435}{3521516} - \lambda \\
+ 5.94622279 - \lambda & 4.40460948 \\
+ 2.54097311           & 1.8822023 - \lambda \\
 \end{array}
 \right) \cdot \vec{w} = 0
 $$
@@ -319,20 +309,80 @@ Wir berechnen jetzt die Eigenvektoren.
 $$
 Det\left(
 \begin{array}{cc}
- \frac{406755}{7043032} - \lambda & \frac{75325}{1760758}\\
- \frac{342549}{14086064} & \frac{63435}{3521516} - \lambda \\
+ 5.94622279 - \lambda & 4.40460948 \\
+ 2.54097311           & 1.8822023 - \lambda \\
 \end{array}
-\right) = \lambda^2-\frac{533625 l}{7043032}
+\right) = \lambda^2-7,82843
 $$
 
-Dann sind die Eigenvektoren
+Dann sind die EigenvektorenX
+
+\begin{itemize}
+\item $2,79793$
 $$
-\vec{w}_1 = \begin{pmatrix}
-\frac{30130}{12687} \\ 1
-\end{pmatrix} , \vec{w}_2 = \begin{pmatrix}
--\frac{20}{27} \\ 1
-\end{pmatrix}
+\vec{w} = 
+\begin{pmatrix} -0,378157864067 \\ 1 \end{pmatrix}
+$$
+\item $-2,79793$
+$$
+\vec{w} = 
+\begin{pmatrix} 0,294792452718 \\ 1 \end{pmatrix}
+$$
+\end{itemize}
+
+Wir transformieren die Datenpunkte.
+
+$$
+z_1
+ = 
+-0,51263145627, 
+z_2
+ = 
+3,24368427187,
+z_3 
+ = 
+2,24368427187 
+$$
+$$
+z_4
+ = 
+4,8655264078,
+z_5
+ = 
+2,48736854373,
+z_6
+ = 
+6,59657922339 $$ $$
+z_7
+ = 
+5,7310528156,
+z_8
+ = 
+1,59657922339,
+z_9
+ = 
+3,97473708746,
+z_{10}
+ = 
+4,21842135933,
 $$
 
+\subsection{d)}
+
+\begin{figure}[H]
+    \def\svgwidth{\columnwidth}
+	\input{1d.pdf_tex}
+	\label{fig:1d}
+	\caption{1d}
+\end{figure}
+
+\subsection{e)}
+
+\begin{figure}[H]
+    \def\svgwidth{\columnwidth}
+	\input{1e.pdf_tex}
+	\label{fig:1e}
+	\caption{1d}
+\end{figure}
 
 \end{document}

@@ -43,8 +43,21 @@ S_B = S_B / (x.shape[0] * x.shape[1])
 ##print S_W
 ##print S_B
 
+
 print np.dot(np.linalg.inv(S_W),S_B)
-print np.linalg.eigvals(np.dot(np.linalg.inv(S_W),S_B))
+print np.eye(len(m_k))*2.79793
+print np.linalg.slogdet(np.dot(np.linalg.inv(S_W),S_B) - np.eye(len(m_k))*2.79793)
+print np.linalg.slogdet(np.dot(np.linalg.inv(S_W),S_B) + np.eye(len(m_k))*2.79793)
+
+print -1.0/2.6443982659626384
+print 1.0/3.3922171031885249
+
+for k in range(x.shape[0]):
+    for n in range(x.shape[1]):
+        print 'z_'
+        print k*5 + (n+1)
+        print ' = '
+        print np.dot(np.array([-1.0/2.6443982659626384, 1]),x[k][n])
 
 ###print (x[0][1])[np.newaxis].transpose()
 

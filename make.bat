@@ -1,0 +1,2 @@
+"%programfiles(x86)%\Inkscape\inkscape" --without-gui --file=1d.svg --export-pdf=1d.pdf --export-latex
+"%programfiles(x86)%\Inkscape\inkscape" --without-gui --file=1e.svg --export-pdf=1e.pdf --export-latex
